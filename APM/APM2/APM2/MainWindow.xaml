@@ -1,0 +1,41 @@
+﻿<Window x:Class="APM2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="APM" 
+        Height="180" 
+        Width="250"
+        MinHeight="180"
+        MinWidth="250"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <GroupBox Header="Логин">
+                <TextBox Text="{Binding Login}"/>
+            </GroupBox>
+            <GroupBox Header="Пароль">
+                <TextBox Text="{Binding Password}"/>
+            </GroupBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Войти"
+                        Grid.Column="0"
+                        Margin="5"
+                        Command="{Binding LogInCommand}"/>
+                <Button Content="Регистрация"
+                        Grid.Column="1"
+                        Margin="5"
+                        Command="{Binding SignUpCommand}"/>
+            </Grid>
+            <Button Content="Гостевой вход"
+                    Margin="10"
+                    Command="{Binding GuestEnterCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

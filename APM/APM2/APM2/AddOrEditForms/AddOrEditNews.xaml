@@ -1,0 +1,48 @@
+﻿<Window x:Class="APM2.AddOrEditForms.AddOrEditNews"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="{Binding ModeOpen}"
+        Height="400"
+        Width="320">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <GroupBox Header="Header"
+                      Margin="10">
+                <TextBox Text="{Binding Header}"
+                         MaxLength="50"/>
+            </GroupBox>
+            <GroupBox Header="Content"
+                      Margin="10">
+                <TextBox Text="{Binding NContent}"
+                         MaxLength="1500"/>
+            </GroupBox>
+            <GroupBox Header="Release date"
+                      Margin="10">
+                <DatePicker Text="{Binding NewsReleaseDate, StringFormat=dd/MM/yyyy}"
+                            SelectedDate="{Binding NewsReleaseDate}"/>
+            </GroupBox>
+            <GroupBox Header="Site"
+                      Margin="10">
+                <ComboBox ItemsSource="{Binding Path = SitesLst}"
+                          Width="260"
+                          SelectedIndex="0"
+                          Name="CBNews"/>
+            </GroupBox>
+
+            <Button Height="30"
+                    Width="130"
+                    Content="Add site"
+                    Command="{Binding AddSiteCommand}"
+                    Margin="10"/>
+
+            <Button Height="30"
+                Width="130"
+                Content="{Binding CurModeNews}"
+                Command="{Binding AddOrEditNewsCommand}"
+                Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,185 @@
+﻿<Window x:Class="APM2.DGV"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="DGV" 
+        Height="720" 
+        Width="1280"
+        MinHeight="720"
+        MinWidth="1280"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TabControl>
+            <TabItem Header="Site"
+                     FontSize="16">
+                <ListView ItemsSource="{Binding Sites}"
+                          SelectedItem="{Binding SelectedSite}"
+                          SelectionMode="Single">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name"
+                                            Width="260"
+                                            DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Addr"
+                                            Width="320"
+                                            DisplayMemberBinding="{Binding Addr}"/>
+                            <GridViewColumn Header="Access"
+                                            Width="60"
+                                            DisplayMemberBinding="{Binding Access}"/>
+                            <GridViewColumn Header="Description"
+                                            Width="600"
+                                            DisplayMemberBinding="{Binding Description}"/>
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu Visibility="{Binding UserMode}">
+                            <MenuItem Header="Добавить"
+                              Command="{Binding AddSiteCommand}"/>
+                            <MenuItem Header="Изменить"
+                              Command="{Binding EditSiteCommand}"/>
+                            <MenuItem Header="Удалить"
+                              Command="{Binding DeleteSiteCommand}"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                </ListView>
+            </TabItem>
+
+            <TabItem Header="News"
+                     FontSize="16">
+                <ListView ItemsSource="{Binding Newss}"
+                          SelectedItem="{Binding SelectedNews}"
+                          SelectionMode="Single">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Header"
+                                            Width="200"
+                                            DisplayMemberBinding="{Binding Header}"/>
+                            <GridViewColumn Header="Content"
+                                            Width="600"
+                                            DisplayMemberBinding="{Binding Content}"/>
+                            <GridViewColumn Header="Release_date"
+                                            Width="180"
+                                            DisplayMemberBinding="{Binding Release_date, StringFormat=dd/MM/yyyy}"/>
+                            <GridViewColumn Header="Site"
+                                            Width="260"
+                                            DisplayMemberBinding="{Binding Site}"/>
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu Visibility="{Binding UserMode}">
+                            <MenuItem Header="Добавить"
+                              Command="{Binding AddNewsCommand}"/>
+                            <MenuItem Header="Изменить"
+                              Command="{Binding EditNewsCommand}"/>
+                            <MenuItem Header="Удалить"
+                              Command="{Binding DeleteNewsCommand}"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                </ListView>
+            </TabItem>
+
+            <TabItem Header="Content"
+                     FontSize="16">
+                <ListView ItemsSource="{Binding Contents}"
+                          SelectedItem="{Binding SelectedContent}"
+                          SelectionMode="Single">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="C_type"
+                                            Width="100"
+                                            DisplayMemberBinding="{Binding C_type}"/>
+                            <GridViewColumn Header="Name"
+                                            Width="120"
+                                            DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Country"
+                                            Width="100"
+                                            DisplayMemberBinding="{Binding Country}"/>
+                            <GridViewColumn Header="Release_date"
+                                            Width="120"
+                                            DisplayMemberBinding="{Binding Release_date, StringFormat=dd/MM/yyyy}"/>
+                            <GridViewColumn Header="Budget"
+                                            Width="80"
+                                            DisplayMemberBinding="{Binding Budget}"/>
+                            <GridViewColumn Header="Duration"
+                                            Width="80"
+                                            DisplayMemberBinding="{Binding Duration}"/>
+                            <GridViewColumn Header="Description"
+                                            Width="480"
+                                            DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="Dub"
+                                            Width="160"
+                                            DisplayMemberBinding="{Binding Dub}"/>
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu Visibility="{Binding UserMode}">
+                            <MenuItem Header="Добавить"
+                              Command="{Binding AddContentCommand}"/>
+                            <MenuItem Header="Изменить"
+                              Command="{Binding EditContentCommand}"/>
+                            <MenuItem Header="Удалить"
+                              Command="{Binding DeleteContentCommand}"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                </ListView>
+            </TabItem>
+
+            <TabItem Header="Users"
+                     FontSize="16"
+                     Visibility="{Binding AdminRole}">
+                <ListView ItemsSource="{Binding Users}"
+                          SelectedItem="{Binding SelectedUser}"
+                          SelectionMode="Single">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name"
+                                            Width="300"
+                                            DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Password"
+                                            Width="600"
+                                            DisplayMemberBinding="{Binding Password}"/>
+                            <GridViewColumn Header="Salt"
+                                            Width="300"
+                                            DisplayMemberBinding="{Binding Salt}"/>
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu Visibility="{Binding UserMode}">
+                            <MenuItem Header="Добавить"
+                              Command="{Binding AddUserCommand}"/>
+                            <MenuItem Header="Изменить"
+                              Command="{Binding EditUserCommand}"/>
+                            <MenuItem Header="Удалить"
+                              Command="{Binding DeleteUserCommand}"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                </ListView>
+            </TabItem>
+
+        </TabControl>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Показать весь контент сайта"
+                    Margin="5"
+                    FontSize="16"
+                    Command="{Binding SiteContentCommand}"/>
+            <Button Grid.Column="1"
+                    Content="Показать все новости сайта"
+                    Margin="5"
+                    FontSize="16"
+                    Command="{Binding SiteNewsCommand}"/>
+        </Grid>
+    </Grid>
+</Window>

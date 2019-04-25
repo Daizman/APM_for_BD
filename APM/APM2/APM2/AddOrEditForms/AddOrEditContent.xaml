@@ -1,0 +1,74 @@
+﻿<Window x:Class="APM2.AddOrEditForms.AddOrEditContent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:APM2.AddOrEditForms"
+        mc:Ignorable="d"
+        Title="{Binding TitleName}" 
+        Height="690" 
+        Width="450">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <GroupBox Header="Type"
+                      Margin="10">
+                <TextBox Text="{Binding ContentType}"
+                         MaxLength="50"/>
+            </GroupBox>
+            <GroupBox Header="Name"
+                      Margin="10">
+                <TextBox Text="{Binding ContentName}"
+                         MaxLength="50"/>
+            </GroupBox>
+            <GroupBox Header="Country"
+                      Margin="10">
+                <TextBox Text="{Binding ContentCountry}"
+                         MaxLength="50"/>
+            </GroupBox>
+            <GroupBox Header="Release date"
+                      Margin="10">
+                <DatePicker Text="{Binding ContentReleaseDate, StringFormat=dd/MM/yyyy}"/>
+            </GroupBox>
+            <GroupBox Header="Budget"
+                      Margin="10">
+                <TextBox Text="{Binding ContentBudget}"
+                         MaxLength="200"/>
+            </GroupBox>
+            <GroupBox Header="Duration"
+                      Margin="10">
+                <TextBox Text="{Binding ContentDuration}"
+                         MaxLength="10"/>
+            </GroupBox>
+            <GroupBox Header="Description"
+                      Margin="10">
+                <TextBox Text="{Binding ContentDescription}"
+                         MaxLength="1000"/>
+            </GroupBox>
+            <GroupBox Header="Dub"
+                      Margin="10">
+                <TextBox Text="{Binding ContentDub}"
+                         MaxLength="750"/>
+            </GroupBox>
+
+            <GroupBox Header="Sites"
+                      Margin="10">
+                <ComboBox ItemsSource="{Binding Path = Sites}"
+                          Width="350"
+                          SelectedIndex="0"
+                          Name="CBSites"/>
+            </GroupBox>
+
+            <Button Height="30"
+                Width="130"
+                Content="Sites"
+                Command="{Binding AddSitesCommand}"
+                Margin="10"/>
+
+            <Button Height="30"
+                Width="130"
+                Content="{Binding CurModeAccept}"
+                Command="{Binding AcceptCommand}"
+                Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
